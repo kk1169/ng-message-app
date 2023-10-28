@@ -1,1 +1,30 @@
-<p>register works!</p>
+<div class="w-full md:w-[32rem]">
+  <div class="flex flex-col bg-white shadow rounded-lg p-6">
+
+    <h3 class="font-medium text-lg mb-6">Register Here!</h3>
+
+    <app-alert [data]="message"></app-alert>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="mb-5">
+        <label for="" class="form-label">Your Name</label>
+        <input type="text" placeholder="Your Name" class="form-control"
+          [ngClass]="{'is-invalid': submitted && f['name'].errors}" formControlName="name">
+      </div>
+      <div class="mb-5">
+        <label for="" class="form-label">Email</label>
+        <input type="email" placeholder="Email" class="form-control" formControlName="email">
+      </div>
+      <div class="mb-5">
+        <label for="" class="form-label">Password</label>
+        <input type="password" placeholder="Password" class="form-control" formControlName="password">
+      </div>
+      <div>
+        <button type="submit" class="btn btn-success mr-2" [disabled]="registerForm.invalid">Register</button>
+      </div>
+    </form>
+  </div>
+
+  <p class="text-center mt-6">Already have account? <a routerLink="/auth/login"
+      class="text-blue-600 hover:underline">Login</a></p>
+</div>

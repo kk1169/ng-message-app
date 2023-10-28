@@ -7,5 +7,109 @@
 
 body {
   font-family: "Roboto", sans-serif;
-  @apply bg-slate-50;
+  @apply bg-slate-50 overflow-x-hidden;
+}
+
+@layer components {
+  // Button
+  .btn {
+    @apply cursor-pointer font-medium rounded-lg px-5 py-2.5 focus:outline-none;
+
+    &:disabled {
+      @apply opacity-60;
+    }
+
+    &.btn-rounded {
+      @apply rounded-full;
+    }
+
+    &.btn-primary {
+      @apply text-white bg-blue-700 hover:bg-blue-800;
+    }
+
+    &.btn-success {
+      @apply text-white bg-green-700 hover:bg-green-800;
+    }
+
+    &.btn-danger {
+      @apply text-white bg-red-700 hover:bg-red-800;
+    }
+
+    &.btn-secondary {
+      @apply text-white bg-gray-700 hover:bg-gray-800;
+    }
+  }
+
+  // Forms Control
+  .form-label {
+    @apply block mb-2 text-sm font-medium text-gray-900;
+  }
+
+  .form-control {
+    @apply bg-gray-50 outline-none border-2 border-gray-300 text-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 px-3.5;
+
+    &.ng-touched.ng-invalid {
+      @apply border-red-500;
+    }
+    &.ng-touched.ng-valid {
+      @apply border-green-500;
+    }
+  }
+
+  .form-error {
+    @apply text-red-600 font-medium text-sm mt-2 inline-block;
+  }
+}
+
+// Message List
+.message-list {
+  @apply flex flex-col bg-white p-6 shadow rounded-lg;
+
+  .message-item {
+    @apply flex justify-between w-full border-t border-gray-300 py-3 hover:bg-gray-50 cursor-pointer px-2;
+
+    .message-item-heading {
+      @apply font-bold text-sm;
+    }
+
+    .message-item-body {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      @apply text-gray-400 text-sm;
+    }
+
+    .message-item-text {
+    }
+
+    .message-date {
+      @apply text-xs font-medium text-gray-900;
+    }
+
+    .message-item-action {
+      @apply hidden;
+
+      span {
+        @apply hover:text-violet-600;
+      }
+    }
+
+    &:hover {
+      .message-item-action {
+        @apply flex;
+      }
+    }
+
+    &.read {
+      @apply bg-gray-50 hover:bg-gray-100;
+
+      .message-item-heading {
+        @apply font-normal;
+      }
+
+      .message-date {
+        @apply text-gray-400;
+      }
+    }
+  }
 }

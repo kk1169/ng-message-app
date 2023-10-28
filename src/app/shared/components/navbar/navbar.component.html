@@ -1,15 +1,17 @@
 <header class="flex items-center text-white py-4 bg-violet-700">
   <div class="container flex justify-between">
     <div class="inline-flex gap-6 items-center">
-      <h2 class="font-bold text-lg"><i class="ri-message-3-line mr-2"></i>Messaging</h2>
+      <app-logo [theme]="'light'"></app-logo>
       <div class="inline-flex">
         <a class="px-2" [routerLink]="['/inbox']">Inbox</a>
         <a class="px-2" [routerLink]="['/compose']">Compose</a>
       </div>
     </div>
-    <div>
+    <div class="inline-flex gap-4 items-center">
+      <span>{{(currentUser$ | async)?.name}}</span>
       <button
-        class="py-2 bg-violet-200 hover:bg-violet-950 rounded-full px-7 text-violet-950 hover:text-violet-200 font-medium transition-colors">Logout</button>
+        class="py-2 bg-violet-200 hover:bg-violet-950 rounded-full px-7 text-violet-950 hover:text-violet-200 font-medium transition-colors"
+        (click)="onLogout()">Logout</button>
     </div>
   </div>
 </header>

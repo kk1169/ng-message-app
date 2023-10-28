@@ -5,6 +5,7 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import { MasterComponent } from './shared/layouts/master/master.component';
 import { ComposeComponent } from './pages/compose/compose.component';
 import { InboxComponent } from './pages/inbox/inbox.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
@@ -15,7 +16,7 @@ export const routes: Routes = [
     ]
   },
   {
-    path: '', component: MasterComponent, children: [
+    path: '', component: MasterComponent, canActivate: [authGuard], children: [
       { path: 'inbox', component: InboxComponent },
       { path: 'compose', component: ComposeComponent }
     ]
